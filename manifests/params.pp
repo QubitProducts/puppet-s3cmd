@@ -13,5 +13,5 @@ class s3cmd::params {
       fail("Unsupported OS: ${::operatingsystem} ")
     }
 
-
+  }
 }
