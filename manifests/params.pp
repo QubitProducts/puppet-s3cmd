@@ -1,9 +1,17 @@
 class s3cmd::params {
 
-case $::lsbdistid {
-    'Ubuntu','Debian' : {
-        $packages = ['s3cmd','python-magic','python-central']
+  case $::operatingsystem {
+    'Ubuntu', 'Debian' : {
+      $packages = ['s3cmd','python-magic', 'python-central' ]
     }
-    default: { fail("Unsupported OS: ${::lsbdistid}") }
- }
+
+    'CentOS', 'Redhat': {
+      $packages = [ 's3cmd','python-magic']
+    }
+
+    default: {
+      fail("Unsupported OS: ${::operatingsystem} ")
+    }
+
+  }
 }
